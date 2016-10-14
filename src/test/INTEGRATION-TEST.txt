@@ -1,0 +1,61 @@
+Product: Integration tests for WSO2 ESB ActiveCollab connector
+
+   Pre-requisites:
+
+    - Maven 3.x
+    - Java 1.6 or above
+	- The org.wso2.esb.integration.integration-base project is required. The test suite has been configured to download this project automatically. If the automatic download fails, download the following project and compile it using the mvn clean install command to update your local repository:
+      https://github.com/wso2-extensions/esb-integration-base
+
+    Tested Platforms: 
+
+    - Ubuntu 14.04,
+    - WSO2 ESB 5.0.0
+ 
+Steps to follow in setting integration test.
+ 1.  Download ESB 5.0.0 from official website and extract the ESB and add "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh.
+
+ 2. Compress modified ESB and copy that zip file in to location "{Activecollab_CONNECTOR_HOME}/repository/".
+	
+ 3. Create an activecollab trial account:
+	i) 	 Using the URL "https://www.activecollab.com/" to create a Free Trial account for activecollab version 5. For that you need to pass the "Your Name or Organization, Email, Password" and keep the those value for further reference.
+	ii)  Do the following steps to get intent and token.
+	     a. Send a POST request to "https://my.activecollab.com/api/v1/external/login" with "email" and "password" as parameters. In the response you will get the url and intent, keep those values for further reference.
+	     b. Send the POST request to "{URL}/api/v1/issue-token-intent" with "intent", "client_vendor", and "client_name" as parameters where the intent is obtained from the previous step, client_vendor is the value of the "Your Name or Organization" which is used when we create an account and client_name is the name of the client and you can use any string.
+	        Note: The value of the "URL" is obtained from step a).
+
+ 4. Update the activecollab properties file at location "{Activecollab_CONNECTOR_HOME}/src/test/resources/artifacts/ESB/connector/config" as below.
+	
+	i) 		apiUrl                  - Use the API URL that is obtained under step 3 ii).
+	ii) 	apiVersion              - The version of the ActiveCollab API.
+	iii) 	intent                  - The intent for the token that is obtained under step 3 ii).
+	iv) 	clientVendor            - The name of the instance that is the value of "your Name or Organization" while creating account.
+	v) 		clientName              - The name of the client, it can be any string.
+	vi)     token                   - The token to access the ActiveCollab resources that is obtained under step 3 ii).
+	vii) 	CategoryName            - Use a valid string as the category name to create new category.
+	viii) 	newCategoryName         - Use a valid string to rename an existing category which is not same as step 4 vii).
+	ix)		companyName             - Use a valid string as the company name to create new company.
+	x)		address                 - Use a valid string as the address of the company.
+	xi)		number                  - Use a valid string as the number of an invoice.
+	xii)	numberOpt               - Use a valid string as the number of another invoice which is not same as step 4 xi).
+	xiii)	note                    - Use a valid string as note of an invoice.
+	xiv)	recipients              - The list of recipients and this must be string array (E.g ["email01","email02"]).
+	xv)		email                   - Use a valid email address to create user.
+	xvi)	emailOpt                - Use a valid another email address to create user.
+	xvii)	type                    - The type of the user.
+	xviii)	password                - Use a valid string as password of an user.
+	xix)	projectName             - Use a valid string as the project name to create new project.
+	xx)		projectNameOpt          - Use a valid string as the project name to create another project which is not same as step 4 xx).
+	xxi)	newProjectName          - Use a valid string to rename an existing project which is not same as step 4 xix) and xx).
+	xxii)	taskName                - Use a valid string as the task name to create new task.
+	xxiii)	taskNameOpt             - Use a valid string as the name to create another task which is not same as step 4 xxii).
+	xxiv)	newTaskName             - Use a valid string to rename an existing task which is not same as step 4 xxii) and xxiii).
+	xxv)    subTaskName             - Use a valid string as the sub task name to create new sub task.
+	xxvi)   subject                 - Use a valid string as a subject for sending invoice.
+	xxvii)  message                 - Use a valid string as a message body for sending invoice.
+
+	Properties vii),viii),ix),xi),xii),xv),xvi),xix),xx),xxi),xxii),xxiii),xxiv) and xxv) need to be changed before running the integration test each time.
+
+ 5. Navigate to "<Activecollab_CONNECTOR_HOME>" and run the following command.
+     $ mvn clean install
+	  

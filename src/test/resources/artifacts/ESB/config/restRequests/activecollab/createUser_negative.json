@@ -1,0 +1,9 @@
+{
+  "apiUrl": "%s(apiUrl)",
+  "apiVersion": "%s(apiVersion)",
+  "intent": "%s(intent)",
+  "clientVendor": "%s(clientVendor)",
+  "clientName": "%s(clientName)",
+  "type": "%s(type)",
+  "email": ""
+}

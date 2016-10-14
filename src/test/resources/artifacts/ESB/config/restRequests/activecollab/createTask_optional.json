@@ -1,0 +1,11 @@
+{
+  "apiUrl": "%s(apiUrl)",
+  "apiVersion": "%s(apiVersion)",
+  "intent": "%s(intent)",
+  "clientVendor": "%s(clientVendor)",
+  "clientName": "%s(clientName)",
+  "projectId": "%s(projectId)",
+  "name": "%s(taskNameOpt)",
+  "assigneeId": "%s(userId)",
+  "isImportant": "true"
+}
