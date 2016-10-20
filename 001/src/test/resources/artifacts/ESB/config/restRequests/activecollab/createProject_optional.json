@@ -1,0 +1,12 @@
+{
+  "email": "%s(email)",
+  "password": "%s(password)",
+  "apiVersion": "%s(apiVersion)",
+  "intent": "%s(intent)",
+  "clientVendor": "%s(clientVendor)",
+  "clientName": "%s(clientName)",
+  "blocking": "%s(blocking)",
+  "name": "%s(projectNameOpt)",
+  "companyId": "%s(companyId)",
+  "categoryId": "%s(categoryId)"
+}
